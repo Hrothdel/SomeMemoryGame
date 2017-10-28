@@ -1,0 +1,19 @@
+#title-container {
+    margin: 40px 0;
+    display: flex;
+    justify-content: center;
+}
+
+#title {
+    font-family: 'Poiret One', cursive;
+    font-size: 100px;
+}
+
+#content-container {
+    display: flex;
+    justify-content: center;
+}
+
+#start-button {
+    font-size: 35px;
+}
