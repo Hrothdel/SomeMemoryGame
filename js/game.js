@@ -9,6 +9,7 @@ let start_button = $('#start-button'),
     grid;
 
 function createGrid(height, width) {
+    let current_content = 1;
 
     for(let i = 0; i < height; i++) {
         grid_container.append(`<tr class="grid-row"></tr>`);
@@ -18,8 +19,8 @@ function createGrid(height, width) {
             let index = (i*width) + (j+1);
 
             cards.push(new Card(index));
-            cards[index-1].content = index + (index%2) - 1;
-            //cards[index-1].addTo(row);
+            cards[index-1].content = Math.floor(current_content);
+            current_content += 0.5;
         }
     }
 };
@@ -31,7 +32,6 @@ function shuffleCards(height, width) {
     for(let i = 0; i < number_of_cards; i++) {
         let swap_position = (Math.floor(Math.random() * (number_of_cards-i))) + i;
 
-        console.log(swap_position);
         let aux = cards[i].content;
         cards[i].content = cards[swap_position].content;
         cards[swap_position].content = aux;
