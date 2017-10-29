@@ -40,7 +40,8 @@
     padding: 50px 0;
     margin: 10px;
 
-    background-color: blue;
+    background-color: white;
+    color: white;
     text-align: center;
 }
 
@@ -51,5 +52,5 @@
     flex-wrap: row;
     align-content: stretch;
 
-    background-color: yellow;
+    background-color: grey;
 }
