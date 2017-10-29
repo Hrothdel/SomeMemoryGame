@@ -16,7 +16,7 @@ function createGrid(height, width) {
 
         for(let j = 0; j < width; j++) {
             let index = (i*width) + (j+1);
-            
+
             cards.push(new Card(index));
             cards[index-1].addTo(row);
         }
@@ -32,3 +32,15 @@ start_button.click(function () {
 
     startGame();
 });
+
+grid_container.click(function (event) {
+    let index = $(event.target).attr('id');
+    if(index !== undefined) {
+        cards[Number($(event.target).attr('id'))-1].show();
+    }
+});
+
+//testing
+$('#start-screen').remove();
+$(startGame);
+//------
