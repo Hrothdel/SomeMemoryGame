@@ -75,8 +75,8 @@ function checkMatch(pair) {
 
 grid_container.click(function (event) {
     let index = Number($(event.target).attr('id')) - 1;
-    
-    if(!isNaN(index)) {
+
+    if(!isNaN(index) && cards[index].is_hidden) {
         cards[index].show();
         active.push(index);
 

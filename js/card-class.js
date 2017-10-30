@@ -25,5 +25,5 @@ Card.prototype.hide = function () {
     setTimeout(function () {
         this.element.css('background-color', 'white');
         this.element.text('');
-    }.bind(this), 1000);
+    }.bind(this), 500);
 };
