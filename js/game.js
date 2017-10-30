@@ -64,24 +64,20 @@ start_button.click(function () {
     startGame();
 });
 
-function hidePair(pair){
-    cards[pair[0]-1].hide();
-    cards[pair[1]-1].hide();
-}
-
 function checkMatch(pair) {
-    if(cards[pair[0]-1].content === cards[pair[1]-1].content) {
+    if(cards[pair[0]].content === cards[pair[1]].content) {
         matches++;
     } else {
-        cards[pair[0]-1].hide();
-        cards[pair[1]-1].hide();
+        cards[pair[0]].hide();
+        cards[pair[1]].hide();
     }
 }
 
 grid_container.click(function (event) {
-    let index = $(event.target).attr('id');
-    if(index !== undefined) {
-        cards[Number($(event.target).attr('id'))-1].show();
+    let index = Number($(event.target).attr('id')) - 1;
+    
+    if(!isNaN(index)) {
+        cards[index].show();
         active.push(index);
 
         if(active.length === 2) {
