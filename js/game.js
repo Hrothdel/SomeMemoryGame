@@ -1,9 +1,11 @@
 const grid_container = $('#content');
 
-const default_width = 5,
+const default_width = 4,
     default_height = 4;
 
-let cards = [];
+let cards = [],
+    active = [],
+    matches = 0;
 
 let start_button = $('#start-button'),
     grid;
@@ -62,10 +64,31 @@ start_button.click(function () {
     startGame();
 });
 
+function hidePair(pair){
+    cards[pair[0]-1].hide();
+    cards[pair[1]-1].hide();
+}
+
+function checkMatch(pair) {
+    if(cards[pair[0]-1].content === cards[pair[1]-1].content) {
+        matches++;
+    } else {
+        cards[pair[0]-1].hide();
+        cards[pair[1]-1].hide();
+    }
+}
+
 grid_container.click(function (event) {
     let index = $(event.target).attr('id');
     if(index !== undefined) {
         cards[Number($(event.target).attr('id'))-1].show();
+        active.push(index);
+
+        if(active.length === 2) {
+            checkMatch(active);
+            active.pop();
+            active.pop();
+        }
     }
 });
 
