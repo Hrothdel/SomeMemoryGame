@@ -20,9 +20,8 @@ Card.prototype.show = function () {
 };
 
 Card.prototype.hide = function () {
-    this.is_hidden = true;
-
     setTimeout(function () {
+        this.is_hidden = true;
         this.element.css('background-color', 'white');
         this.element.text('');
     }.bind(this), 500);
