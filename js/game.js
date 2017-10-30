@@ -1,17 +1,21 @@
-const grid_container = $('#content');
+const content_section = $('#content');
 
 const default_width = 4,
     default_height = 4;
 
 let cards = [],
     active = [],
+    moves = 0,
     matches = 0;
 
 let start_button = $('#start-button'),
-    grid;
+    grid_container,
+    stats_section;
 
 function createGrid(height, width) {
     let current_content = 1;
+    content_section.append('<section id="grid"></section>');
+    grid_container = $('#grid');
 
     for(let i = 0; i < height; i++) {
         grid_container.append(`<tr class="grid-row"></tr>`);
@@ -52,7 +56,16 @@ function showGrid(height, width) {
     });
 }
 
+function addStats() {
+    content_section.append('<section id="stats-section"></section>');
+    stats_section = $('#stats-section');
+
+    stats_section.append('<span id="moves" class="stats">Moves: 0</span>');
+    stats_section.append('<span id="matches" class="stats">Matches: 0</span>');
+}
+
 function startGame() {
+    addStats();
     createGrid(default_height, default_width);
     shuffleCards(default_height, default_width);
     showGrid(default_height, default_width);
@@ -73,18 +86,26 @@ function checkMatch(pair) {
     }
 }
 
-grid_container.click(function (event) {
+function updateStats() {
+    $('#moves').text(`Moves: ${moves}`);
+    $('#matches').text(`Matches: ${matches}`);
+}
+
+content_section.click(function (event) {
     let index = Number($(event.target).attr('id')) - 1;
 
     if(!isNaN(index) && cards[index].is_hidden) {
         cards[index].show();
         active.push(index);
+        moves++;
 
         if(active.length === 2) {
             checkMatch(active);
             active.pop();
             active.pop();
         }
+
+        updateStats();
     }
 });
 

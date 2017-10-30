@@ -11,6 +11,13 @@
 
 #content {
     display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#grid {
+    display: flex;
 
     flex-wrap: wrap;
     flex-direction: column;
@@ -53,4 +60,16 @@
     align-content: stretch;
 
     background-color: grey;
+}
+
+#stats-section {
+    display: flex;
+    justify-content: center;
+}
+
+.stats {
+    font-size: 40px;
+    margin: 10px 10px;
+    padding: 5px 15px;
+    background-color: #ccc;
 }
