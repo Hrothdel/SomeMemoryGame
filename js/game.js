@@ -6,7 +6,8 @@ const default_width = 4,
 let cards = [],
     active = [],
     moves = 0,
-    matches = 0;
+    matches = 0,
+    start_time = undefined;
 
 let start_button = $('#start-button'),
     grid_container,
@@ -62,6 +63,7 @@ function addStats() {
 
     stats_section.append('<span id="moves" class="stats">Moves: 0</span>');
     stats_section.append('<span id="matches" class="stats">Matches: 0</span>');
+    stats_section.append('<span id="timer" class="stats">Time: 00-00</span>');
 }
 
 function startGame() {
@@ -91,6 +93,22 @@ function updateStats() {
     $('#matches').text(`Matches: ${matches}`);
 }
 
+function pad(number) {
+    return (number > 9 ? String(number) : '0' + String(number));
+}
+
+function getTimeElapsed() {
+    let delta = Date.now() - start_time;
+
+    return pad(Math.floor(delta/1000/60)) + '-' + pad(Math.floor((delta/1000))%60);
+}
+
+function updateTimer() {
+    if(start_time !== undefined) {
+        $('#timer').text(`Time: ${getTimeElapsed()}`);
+    }
+}
+
 content_section.click(function (event) {
     let index = Number($(event.target).attr('id')) - 1;
 
@@ -98,6 +116,10 @@ content_section.click(function (event) {
         cards[index].show();
         active.push(index);
         moves++;
+
+        if(start_time === undefined) {
+            start_time = Date.now();
+        }
 
         if(active.length === 2) {
             checkMatch(active);
@@ -109,6 +131,9 @@ content_section.click(function (event) {
     }
 });
 
+setInterval(updateTimer, 500); //updating timer about twice a second,
+                                //to avoid counter jumps caused by arbitrary lagging
+                                
 //testing
 $('#start-screen').remove();
 $(startGame);
