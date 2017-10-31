@@ -30,7 +30,8 @@
 }
 
 #start-screen {
-
+    display: flex;
+    justify-content: center;
 }
 
 #start-button {
@@ -72,4 +73,9 @@
     margin: 10px 10px;
     padding: 5px 15px;
     background-color: #ccc;
+}
+
+#reset-button {
+    font-size: 40px;
+    margin: auto;
 }

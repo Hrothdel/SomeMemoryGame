@@ -13,6 +13,15 @@ let start_button = $('#start-button'),
     grid_container,
     stats_section;
 
+function initialize() {
+    cards = [];
+    active = [];
+    moves = 0;
+    matches = 0;
+
+    start_time = undefined;
+}
+
 function createGrid(height, width) {
     let current_content = 1;
     content_section.append('<section id="grid"></section>');
@@ -66,12 +75,36 @@ function addStats() {
     stats_section.append('<span id="timer" class="stats">Time: 00-00</span>');
 }
 
-function startGame() {
-    addStats();
+function addResetButton() {
+    content_section.append('<button id="reset-button">Reset</button>');
+
+    $('#reset-button').click(function () {
+        restart();
+    });
+}
+
+function addGrid() {
     createGrid(default_height, default_width);
     shuffleCards(default_height, default_width);
     showGrid(default_height, default_width);
+}
+
+function startGame() {
+    initialize();
+    addStats();
+    addResetButton();
+    addGrid();
 };
+
+function restart() {
+    $('#grid').remove();
+    initialize();
+
+    addGrid();
+
+    updateStats();
+    updateTimer();
+}
 
 start_button.click(function () {
     $('#start-screen').remove();
@@ -110,6 +143,8 @@ function getTimeElapsed() {
 function updateTimer() {
     if(start_time !== undefined) {
         $('#timer').text(`Time: ${getTimeElapsed()}`);
+    } else {
+        $('#timer').text('Time: 00-00');
     }
 }
 
@@ -119,7 +154,6 @@ content_section.click(function (event) {
     if(!isNaN(index) && cards[index].is_hidden) {
         cards[index].show();
         active.push(index);
-        //moves++;
 
         if(start_time === undefined) {
             start_time = Date.now();
