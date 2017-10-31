@@ -1,7 +1,7 @@
 const content_section = $('#content');
 
-const default_width = 4,
-    default_height = 4;
+const default_width = 2,
+    default_height = 2;
 
 let cards = [],
     active = [],
@@ -83,6 +83,12 @@ function addResetButton() {
     });
 }
 
+$('#win-reset').click(function () {
+    $('#modal').css('display', 'none');
+    
+    restart();
+});
+
 function addGrid() {
     createGrid(default_height, default_width);
     shuffleCards(default_height, default_width);
@@ -114,12 +120,24 @@ start_button.click(function () {
     startGame();
 });
 
+function win() {
+    let win_time = getTimeElapsed();
+
+    $('#modal').css('display', 'block');
+    $('#win-time').text(`Time: ${win_time}`);
+    $('#win-moves').text(`Moves: ${moves}`);
+}
+
 function checkMatch(pair) {
     if(cards[pair[0]].content === cards[pair[1]].content) {
         matches++;
         moves++;
         cards[pair[0]].match();
         cards[pair[1]].match();
+
+        if(matches === default_width*default_height/2) {
+            win();
+        }
     } else {
         moves++;
         cards[pair[0]].hide();
