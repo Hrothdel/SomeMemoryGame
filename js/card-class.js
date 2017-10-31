@@ -26,3 +26,7 @@ Card.prototype.hide = function () {
         this.element.text('');
     }.bind(this), 500);
 };
+
+Card.prototype.match = function () {
+    this.element.css('background-color', '#3f1');
+}

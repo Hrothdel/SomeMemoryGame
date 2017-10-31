@@ -82,6 +82,8 @@ start_button.click(function () {
 function checkMatch(pair) {
     if(cards[pair[0]].content === cards[pair[1]].content) {
         matches++;
+        cards[pair[0]].match();
+        cards[pair[1]].match();
     } else {
         cards[pair[0]].hide();
         cards[pair[1]].hide();
@@ -133,7 +135,7 @@ content_section.click(function (event) {
 
 setInterval(updateTimer, 500); //updating timer about twice a second,
                                 //to avoid counter jumps caused by arbitrary lagging
-                                
+
 //testing
 $('#start-screen').remove();
 $(startGame);
