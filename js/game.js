@@ -36,7 +36,7 @@ function createGrid(height, width) {
 
             cards.push(new Card(index));
             cards[index-1].content = Math.floor(current_content);
-            current_content += 0.5;
+            current_content += 0.5; //To initially place values in equal pairs
         }
     }
 };
@@ -91,17 +91,19 @@ function addGrid() {
 
 function startGame() {
     initialize();
+
     addStats();
     addResetButton();
     addGrid();
 };
 
 function restart() {
+    //Removing the whole grid, to have reinitialized all of the card objects
     $('#grid').remove();
     initialize();
-
     addGrid();
 
+    //Update stats and timer, to show initial values
     updateStats();
     updateTimer();
 }
@@ -144,7 +146,7 @@ function updateTimer() {
     if(start_time !== undefined) {
         $('#timer').text(`Time: ${getTimeElapsed()}`);
     } else {
-        $('#timer').text('Time: 00-00');
+        $('#timer').text('Time: 00-00'); //For the updates after a reset
     }
 }
 
@@ -161,8 +163,8 @@ content_section.click(function (event) {
 
         if(active.length === 2) {
             checkMatch(active);
-            active.pop();
-            active.pop();
+
+            active = [];
         }
 
         updateStats();
