@@ -118,3 +118,15 @@
 #win-reset {
     margin: auto;
 }
+
+#star-rating {
+    display: flex;
+    justify-content: center;
+}
+
+.star {
+    width: 45px;
+    height: 45px;
+
+    margin: 5px;
+}

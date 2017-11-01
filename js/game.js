@@ -1,13 +1,18 @@
 const content_section = $('#content');
 
-const default_width = 2,
-    default_height = 2;
+//star rating: n/2 + ceil(n/4);
+
+const default_width = 4,
+    default_height = 4;
 
 let cards = [],
     active = [],
     moves = 0,
     matches = 0,
-    start_time = undefined;
+    start_time = undefined,
+    optimal_moves,
+    mid_rating_step = 5,
+    low_rating_step = 15;
 
 let start_button = $('#start-button'),
     grid_container,
@@ -66,6 +71,31 @@ function showGrid(height, width) {
     });
 }
 
+function updateStarRating () {
+    $('#star-rating').children().remove();
+
+    let star_images = "";
+    if(moves <= (optimal_moves + Math.floor(optimal_moves * 0.75))) {
+        star_images += '<img class="star" src="images/star-active.png">';
+    } else {
+        star_images += '<img class="star" src="images/star-inactive.png">';
+    }
+
+    if(moves <= (optimal_moves + Math.floor(optimal_moves * 0.25))) {
+        star_images += '<img class="star" src="images/star-active.png">';
+    } else {
+        star_images += '<img class="star" src="images/star-inactive.png">';
+    }
+
+    if(moves <= optimal_moves) {
+        star_images += '<img class="star" src="images/star-active.png">';
+    } else {
+        star_images += '<img class="star" src="images/star-inactive.png">';
+    }
+
+    $('#star-rating').append(star_images);
+}
+
 function addStats() {
     content_section.append('<section id="stats-section"></section>');
     stats_section = $('#stats-section');
@@ -73,6 +103,8 @@ function addStats() {
     stats_section.append('<span id="moves" class="stats">Moves: 0</span>');
     stats_section.append('<span id="matches" class="stats">Matches: 0</span>');
     stats_section.append('<span id="timer" class="stats">Time: 00-00</span>');
+
+    stats_section.append('<span id="star-rating" class="stats"></span');
 }
 
 function addResetButton() {
@@ -85,7 +117,7 @@ function addResetButton() {
 
 $('#win-reset').click(function () {
     $('#modal').css('display', 'none');
-    
+
     restart();
 });
 
@@ -101,6 +133,10 @@ function startGame() {
     addStats();
     addResetButton();
     addGrid();
+
+    optimal_moves = (default_width*default_height)/2 + Math.ceil((default_width*default_height)/4);
+
+    updateStarRating();
 };
 
 function restart() {
@@ -148,6 +184,8 @@ function checkMatch(pair) {
 function updateStats() {
     $('#moves').text(`Moves: ${moves}`);
     $('#matches').text(`Matches: ${matches}`);
+
+    updateStarRating();
 }
 
 function pad(number) {
