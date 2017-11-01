@@ -2,8 +2,8 @@ const content_section = $('#content');
 
 //star rating: n/2 + ceil(n/4);
 
-const default_width = 4,
-    default_height = 4;
+const default_width = 2,
+    default_height = 2;
 
 let cards = [],
     active = [],
@@ -97,26 +97,19 @@ function updateStarRating () {
 }
 
 function addStats() {
-    content_section.append('<section id="stats-section"></section>');
-    stats_section = $('#stats-section');
-
-    stats_section.append('<span id="moves" class="stats">Moves: 0</span>');
-    stats_section.append('<span id="matches" class="stats">Matches: 0</span>');
-    stats_section.append('<span id="timer" class="stats">Time: 00-00</span>');
-
-    stats_section.append('<span id="star-rating" class="stats"></span');
+    $('#stats-section').css('display', 'flex');
 }
 
-function addResetButton() {
-    content_section.append('<button id="reset-button">Reset</button>');
-
-    $('#reset-button').click(function () {
-        restart();
-    });
+function addButtons() {
+    $('#buttons-section').css('display', 'flex');
 }
+
+$('#reset-button').click(function () {
+    restart();
+});
 
 $('#win-reset').click(function () {
-    $('#modal').css('display', 'none');
+    $('#win-screen').css('display', 'none');
 
     restart();
 });
@@ -131,7 +124,7 @@ function startGame() {
     initialize();
 
     addStats();
-    addResetButton();
+    addButtons();
     addGrid();
 
     optimal_moves = (default_width*default_height)/2 + Math.ceil((default_width*default_height)/4);
@@ -159,7 +152,7 @@ start_button.click(function () {
 function win() {
     let win_time = getTimeElapsed();
 
-    $('#modal').css('display', 'block');
+    $('#win-screen').css('display', 'block');
     $('#win-time').text(`Time: ${win_time}`);
     $('#win-moves').text(`Moves: ${moves}`);
 }
