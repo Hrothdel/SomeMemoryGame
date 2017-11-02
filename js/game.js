@@ -2,8 +2,8 @@ const content_section = $('#content');
 
 //star rating: n/2 + ceil(n/4);
 
-const default_width = 2,
-    default_height = 2;
+const default_width = 4,
+    default_height = 4;
 
 let cards = [],
     active = [],
@@ -75,13 +75,13 @@ function updateStarRating () {
     $('#star-rating').children().remove();
 
     let star_images = "";
-    if(moves <= (optimal_moves + Math.floor(optimal_moves * 0.75))) {
+    if(moves <= (optimal_moves + Math.ceil(optimal_moves * 0.75))) {
         star_images += '<img class="star" src="images/star-active.png">';
     } else {
         star_images += '<img class="star" src="images/star-inactive.png">';
     }
 
-    if(moves <= (optimal_moves + Math.floor(optimal_moves * 0.25))) {
+    if(moves <= (optimal_moves + Math.ceil(optimal_moves * 0.25))) {
         star_images += '<img class="star" src="images/star-active.png">';
     } else {
         star_images += '<img class="star" src="images/star-inactive.png">';
@@ -103,16 +103,6 @@ function addStats() {
 function addButtons() {
     $('#buttons-section').css('display', 'flex');
 }
-
-$('#reset-button').click(function () {
-    restart();
-});
-
-$('#win-reset').click(function () {
-    $('#win-screen').css('display', 'none');
-
-    restart();
-});
 
 function addGrid() {
     createGrid(default_height, default_width);
@@ -199,6 +189,10 @@ function updateTimer() {
     }
 }
 
+function showOptions() {
+    $('#options-screen').css('display', 'block');
+}
+
 content_section.click(function (event) {
     let index = Number($(event.target).attr('id')) - 1;
 
@@ -219,6 +213,23 @@ content_section.click(function (event) {
         updateStats();
     }
 });
+
+function hideOptionsScreen() {
+    $('#options-screen').css('display', 'none');
+}
+
+$('#reset-button').click(restart);
+
+$('#options-button').click(showOptions);
+
+$('#options-close-button').click(hideOptionsScreen);
+
+$('#win-reset').click(function () {
+    $('#win-screen').css('display', 'none');
+
+    restart();
+});
+
 
 setInterval(updateTimer, 500); //updating timer about twice a second,
                                 //to avoid counter jumps caused by arbitrary lagging
