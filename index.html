@@ -37,7 +37,31 @@
         <div id="options-screen" class="modal">
             <section class="modal-content" id="options-content">
                 <button id="options-close-button">&times;</button>
-                <h2 id="options-header">Settings</h2>
+
+                <form oninput="width_output.value=width.value; height_output.value=height.value">
+                    <h2 id="options-header">Settings</h2>
+                    <section class="options-screen-section">
+                        <h3 class="options-section-title">Grid dimmensions</h3>
+
+                        <section class="options-item">
+                            <label for="input-width"><span class="options-label">Width: </span></label>
+                            <span class="input-output">
+                                <input type="range" name="width" id="input-width" value="4" step="2" min="2" max="8">
+                                <output class="output" for="width" name="width_output">4</output>
+                            </span>
+                        </section>
+
+                        <section class="options-item">
+                            <label for="input-height"><span class="options-label">Height: </span></label>
+                            <span class="input-output">
+                                <input type="range" name="height" id="input-height" value="4" step="1" min="2" max="8">
+                                <output class="output" for="height" name="height_output">4</output>
+                            </span>
+                        </section>
+
+                        <span class="note">The width can only be set to even values to ensure that the number of cards will also be even.</span>
+                    </section>
+                </form>
             </section>
         </div>
 
