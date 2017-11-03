@@ -1,7 +1,5 @@
 const content_section = $('#content');
 
-//star rating: n/2 + ceil(n/4);
-
 const default_width = 4,
     default_height = 4;
 
@@ -133,12 +131,6 @@ function restart() {
     updateTimer();
 }
 
-start_button.click(function () {
-    $('#start-screen').remove();
-
-    startGame();
-});
-
 function win() {
     let win_time = getTimeElapsed();
 
@@ -193,6 +185,10 @@ function showOptions() {
     $('#options-screen').css('display', 'block');
 }
 
+function hideOptionsScreen() {
+    $('#options-screen').css('display', 'none');
+}
+
 content_section.click(function (event) {
     let index = Number($(event.target).attr('id')) - 1;
 
@@ -214,9 +210,11 @@ content_section.click(function (event) {
     }
 });
 
-function hideOptionsScreen() {
-    $('#options-screen').css('display', 'none');
-}
+start_button.click(function () {
+    $('#start-screen').remove();
+
+    startGame();
+});
 
 $('#reset-button').click(restart);
 
@@ -229,7 +227,6 @@ $('#win-reset').click(function () {
 
     restart();
 });
-
 
 setInterval(updateTimer, 500); //updating timer about twice a second,
                                 //to avoid counter jumps caused by arbitrary lagging

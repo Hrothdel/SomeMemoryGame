@@ -21,7 +21,7 @@
     overflow: auto;
 
     background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background-color: rgba(0,0,0,0.4); 
 }
 
 .modal-content {
@@ -35,7 +35,6 @@
     padding: 20px;
 
     display: flex;
-    /*justify-content: center;*/
     flex-direction: column;
 }
 
@@ -68,10 +67,19 @@
     font-size: 35px;
 }
 
+#cog {
+    width: 55px;
+    height: 55px;
+}
+
 #options {
     background-color: #fff;
     width: 400px;
     height: 600px;
+}
+
+#options-content {
+    padding-top: 0;
 }
 
 #options-close-button {
@@ -83,8 +91,6 @@
     font-weight: bold;
     color: #777;
 
-    /*margin-top: 0;*/
-    /*float: right;*/
     align-self: flex-end;
     position: fixed;
 }
@@ -120,6 +126,10 @@
     align-items: center;
 }
 
+.options-label {
+    font-size: 30px;
+}
+
 input {
     font-size: 30px;
 }
@@ -134,39 +144,10 @@ output {
     width: 50%;
 }
 
-.options-label {
-    font-size: 30px;
-}
-
 .note {
     margin-top: 20px;
     font-size: 15px;
     color: #888;
-}
-
-.card {
-    font-size: 35px;
-
-    width: 50px;
-    height: 50px;
-    flex-grow: 1;
-
-    padding: 50px 0;
-    margin: 10px;
-
-    background-color: white;
-    color: white;
-    text-align: center;
-}
-
-.grid-row {
-    display: flex;
-
-    width: 100%;
-    flex-wrap: row;
-    align-content: stretch;
-
-    background-color: grey;
 }
 
 #stats-section {
@@ -197,15 +178,6 @@ output {
     background-color: #ccc;
 }
 
-.win-text {
-    font-size: 30px;
-    padding: 10px;
-}
-
-#win-reset {
-    margin: auto;
-}
-
 #star-rating {
     display: flex;
     justify-content: center;
@@ -218,11 +190,36 @@ output {
     margin: 5px;
 }
 
-#cog {
-    width: 55px;
-    height: 55px;
+.grid-row {
+    display: flex;
+
+    width: 100%;
+    flex-wrap: row;
+    align-content: stretch;
+
+    background-color: grey;
 }
 
-#options-content {
-    padding-top: 0;
+.card {
+    font-size: 35px;
+
+    width: 50px;
+    height: 50px;
+    flex-grow: 1;
+
+    padding: 50px 0;
+    margin: 10px;
+
+    background-color: white;
+    color: white;
+    text-align: center;
+}
+
+.win-text {
+    font-size: 30px;
+    padding: 10px;
+}
+
+#win-reset {
+    margin: auto;
 }
