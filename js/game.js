@@ -148,7 +148,6 @@ function win() {
 function checkMatch(pair) {
     if(cards[pair[0]].content === cards[pair[1]].content) {
         matches++;
-        moves++;
         cards[pair[0]].match();
         cards[pair[1]].match();
 
@@ -156,7 +155,6 @@ function checkMatch(pair) {
             win();
         }
     } else {
-        moves++;
         cards[pair[0]].hide();
         cards[pair[1]].hide();
     }
@@ -208,6 +206,8 @@ content_section.click(function (event) {
             checkMatch(active);
 
             active = [];
+        } else {
+            moves++;
         }
 
         updateStats();
