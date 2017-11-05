@@ -7,23 +7,29 @@ let Card = function (position) {
 };
 
 Card.prototype.addTo = function (parent) {
-    parent.append(`<tc class="card" id="${this.position}"></tc>`)
+    parent.append(`<tc class="card" id="${this.position}"><img class="card-image" id="${this.position}-img"></tc>`);
+
     this.element = $(`#${this.position}`);
 };
+
+Card.prototype.bindImage = function (number) {
+    $(`#${this.position}-img`).attr('src', `images/numbers/${number}.png`);
+    $(`#${this.position}-img`).css('display', 'none');
+}
 
 Card.prototype.show = function () {
     this.is_hidden = false;
 
     this.element.css('background-color', 'black');
-    this.element.text(String(this.content));
-
+    $(`#${this.position}-img`).css('display', 'inline');
 };
 
 Card.prototype.hide = function () {
     setTimeout(function () {
         this.is_hidden = true;
+
         this.element.css('background-color', 'white');
-        this.element.text('');
+        $(`#${this.position}-img`).css('display', 'none');
     }.bind(this), 500);
 };
 

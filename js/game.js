@@ -24,7 +24,7 @@ function initialize() {
     start_time = undefined;
 }
 
-function createGrid(height, width) {
+function createGrid() {
     let current_content = 1;
     content_section.append('<section id="grid"></section>');
     grid_container = $('#grid');
@@ -43,9 +43,16 @@ function createGrid(height, width) {
     }
 };
 
-function shuffleCards(height, width) {
-    let number_of_cards = height * width,
-        number_of_pairs = number_of_cards / 2;
+function bindCardImages() {
+    let number_of_cards = height * width;
+
+    for(let i = 0; i < number_of_cards; i++) {
+        cards[i].bindImage(cards[i].content);
+    }
+}
+
+function shuffleCards() {
+    let number_of_cards = height * width;
 
     for(let i = 0; i < number_of_cards; i++) {
         let swap_position = (Math.floor(Math.random() * (number_of_cards-i))) + i;
@@ -56,7 +63,7 @@ function shuffleCards(height, width) {
     }
 }
 
-function showGrid(height, width) {
+function addGridElements() {
     let number_of_cards = height * width,
         index = 0;
 
@@ -102,9 +109,10 @@ function addButtons() {
 }
 
 function addGrid() {
-    createGrid(height, width);
-    shuffleCards(height, width);
-    showGrid(height, width);
+    createGrid();
+    shuffleCards();
+    addGridElements();
+    bindCardImages();
 }
 
 function recalculateOptimalMoves() {
