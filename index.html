@@ -38,7 +38,7 @@
             <section class="modal-content" id="options-content">
                 <button id="options-close-button">&times;</button>
 
-                <form oninput="width_output.value=width.value; height_output.value=height.value">
+                <form id="options-form" oninput="width_output.value=width.value; height_output.value=height.value">
                     <h2 id="options-header">Settings</h2>
                     <section class="options-screen-section">
                         <h3 class="options-section-title">Grid dimmensions</h3>
@@ -60,6 +60,8 @@
                         </section>
 
                         <span class="note">The width can only be set to even values to ensure that the number of cards will also be even.</span>
+
+                        <input type="submit" id="apply-button" value="Apply">
                     </section>
                 </form>
             </section>

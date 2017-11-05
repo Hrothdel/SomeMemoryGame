@@ -1,14 +1,13 @@
 const content_section = $('#content');
 
-const default_width = 4,
-    default_height = 4;
-
-let cards = [],
+let width = 4,
+    height = 4,
+    cards = [],
     active = [],
     moves = 0,
     matches = 0,
     start_time = undefined,
-    optimal_moves,
+    optimal_moves = 0,
     mid_rating_step = 5,
     low_rating_step = 15;
 
@@ -103,9 +102,13 @@ function addButtons() {
 }
 
 function addGrid() {
-    createGrid(default_height, default_width);
-    shuffleCards(default_height, default_width);
-    showGrid(default_height, default_width);
+    createGrid(height, width);
+    shuffleCards(height, width);
+    showGrid(height, width);
+}
+
+function recalculateOptimalMoves() {
+    optimal_moves = (width*height)/2 + Math.ceil((width*height)/4);
 }
 
 function startGame() {
@@ -115,8 +118,7 @@ function startGame() {
     addButtons();
     addGrid();
 
-    optimal_moves = (default_width*default_height)/2 + Math.ceil((default_width*default_height)/4);
-
+    recalculateOptimalMoves();
     updateStarRating();
 };
 
@@ -146,7 +148,7 @@ function checkMatch(pair) {
         cards[pair[0]].match();
         cards[pair[1]].match();
 
-        if(matches === default_width*default_height/2) {
+        if(matches === width*height/2) {
             win();
         }
     } else {
@@ -225,6 +227,17 @@ $('#options-close-button').click(hideOptionsScreen);
 $('#win-reset').click(function () {
     $('#win-screen').css('display', 'none');
 
+    restart();
+});
+
+$('#options-form').submit(function (event) {
+    event.preventDefault();
+    height = $('#input-height').val();
+    width = $('#input-width').val();
+
+    hideOptionsScreen();
+
+    recalculateOptimalMoves();
     restart();
 });
 

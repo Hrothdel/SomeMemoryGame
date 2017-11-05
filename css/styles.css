@@ -21,7 +21,7 @@
     overflow: auto;
 
     background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); 
+    background-color: rgba(0,0,0,0.4);
 }
 
 .modal-content {
@@ -43,19 +43,6 @@
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: center;
-}
-
-#grid {
-    display: flex;
-
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-
-    width: 1000px;
-    margin: auto;
-    background-color: red;
 }
 
 #start-screen {
@@ -130,9 +117,9 @@
     font-size: 30px;
 }
 
-input {
-    font-size: 30px;
-}
+/*input {
+    font-size: 40px;
+}*/
 
 output {
     font-size: 25px;
@@ -142,6 +129,17 @@ output {
     display: flex;
     flex-direction: column;
     width: 50%;
+}
+
+#apply-button {
+    -webkit-appearance: none; /*The text won't change according to this file without this*/
+    -moz-appeareance: none;
+    appearance: none;
+
+    border: 2px solid #ccc;
+    background: none;
+    font-size: 25px;
+    margin: auto;
 }
 
 .note {
@@ -198,6 +196,19 @@ output {
     align-content: stretch;
 
     background-color: grey;
+}
+
+#grid {
+    display: flex;
+
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    width: 1000px;
+    margin: auto;
+    background-color: red;
 }
 
 .card {
