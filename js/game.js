@@ -130,11 +130,15 @@ function restart() {
 
     //Update stats and timer, to show initial values
     updateStats();
+
+    start_time = Date.now();  //A quite hacky way to display the initial value of the timer
     updateTimer();
+    start_time = undefined; //Stop the timer so that it only starts on the first move after the restart
 }
 
 function win() {
     let win_time = getTimeElapsed();
+    start_time = undefined;
 
     $('#win-screen').css('display', 'block');
     $('#win-time').text(`Time: ${win_time}`);
@@ -179,7 +183,7 @@ function updateTimer() {
     if(start_time !== undefined) {
         $('#timer').text(`Time: ${getTimeElapsed()}`);
     } else {
-        $('#timer').text('Time: 00-00'); //For the updates after a reset
+        // $('#timer').text('Time: 00-00'); //For the updates after a reset or while the win-screen is visible
     }
 }
 
