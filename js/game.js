@@ -38,7 +38,7 @@ function createGrid(height, width) {
 
             cards.push(new Card(index));
             cards[index-1].content = Math.floor(current_content);
-            current_content += 0.5; //To initially place values in equal pairs
+            current_content += 0.5; //To initially place the values in equal pairs
         }
     }
 };
@@ -182,8 +182,6 @@ function getTimeElapsed() {
 function updateTimer() {
     if(start_time !== undefined) {
         $('#timer').text(`Time: ${getTimeElapsed()}`);
-    } else {
-        // $('#timer').text('Time: 00-00'); //For the updates after a reset or while the win-screen is visible
     }
 }
 
@@ -251,10 +249,9 @@ $(window).click(function (event) {
     }
 });
 
-setInterval(updateTimer, 500); //updating timer about twice a second,
-                                //to avoid counter jumps caused by arbitrary lagging
+setInterval(updateTimer, 500); /*Updating the timer about twice a second,
+                               to avoid counter jumps caused by arbitrary lagging*/
 
 //testing
 $('#start-screen').remove();
 $(startGame);
-//------
