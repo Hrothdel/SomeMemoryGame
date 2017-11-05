@@ -245,6 +245,12 @@ $('#options-form').submit(function (event) {
     restart();
 });
 
+$(window).click(function (event) {
+    if(event.target.id === 'options-screen') { //Hide the options screen on a click outside its content zone
+        hideOptionsScreen();
+    }
+});
+
 setInterval(updateTimer, 500); //updating timer about twice a second,
                                 //to avoid counter jumps caused by arbitrary lagging
 
