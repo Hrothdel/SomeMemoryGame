@@ -58,7 +58,7 @@ function win() {
     let win_time = getTimeElapsed();
     start_time = undefined;
 
-    $('#win-screen').css('display', 'block');
+    $('#win-screen').css('display', 'flex');
     $('#win-time').text(`Time: ${win_time}`);
     $('#win-moves').text(`Moves: ${moves}`);
 
@@ -82,7 +82,7 @@ function checkMatch(pair) {
 }
 
 function showOptions() {
-    $('#options-screen').css('display', 'block');
+    $('#options-screen').css('display', 'flex');
 }
 
 function hideOptionsScreen() {
