@@ -9,7 +9,8 @@ let width = 4,
     start_time = undefined,
     optimal_moves = 0,
     mid_rating_step = 5,
-    low_rating_step = 15;
+    low_rating_step = 15,
+    shape_border_radius = 20;
 
 let start_button = $('#start-button'),
     grid_container,
@@ -88,6 +89,24 @@ function hideOptionsScreen() {
     $('#options-screen').css('display', 'none');
 }
 
+function changeCardShape(shape) {
+    let radius = undefined;
+
+    switch(shape) {
+        case "square":
+            radius = 0;
+            break;
+        case "rounded-square":
+            radius = 20;
+            break;
+        case "circle":
+            radius = 80;
+            break;
+    }
+
+    shape_border_radius = radius;
+}
+
 content_section.click(function (event) {
     let index = Number($(event.target).attr('id')) - 1;
 
@@ -133,6 +152,8 @@ $('#options-form').submit(function (event) {
     event.preventDefault();
     height = $('#input-height').val();
     width = $('#input-width').val();
+
+    changeCardShape($('input[name=shape]:checked').val());
 
     hideOptionsScreen();
 

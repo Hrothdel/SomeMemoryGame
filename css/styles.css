@@ -29,7 +29,7 @@
 
     background-color: #fff;
     margin: auto;
-    margin-top: 20%;
+    margin-top: 10%;
 
     width: 40%;
     padding: 20px;
@@ -62,7 +62,6 @@
 #options {
     background-color: #fff;
     width: 400px;
-    height: 600px;
 }
 
 #options-content {
@@ -114,7 +113,8 @@
 }
 
 .options-label {
-    font-size: 30px;
+    font-size: 25px;
+    margin: 5px 0;
 }
 
 output {
@@ -125,6 +125,16 @@ output {
     display: flex;
     flex-direction: column;
     width: 50%;
+}
+
+.radio-option-and-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.radio-label {
+    font-size: 30px;
 }
 
 #apply-button {
@@ -215,6 +225,7 @@ output {
 
     width: 150px;
     height: 150px;
+    border: 1px solid #888;
 
     display: flex;
     justify-content: center;

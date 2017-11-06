@@ -17,6 +17,10 @@ function createGrid() {
     }
 };
 
+function addDynamicStyling() {
+    $('.card').css('border-radius', `${shape_border_radius}px`);
+}
+
 function bindCardImages() {
     let number_of_cards = height * width;
 
@@ -53,5 +57,6 @@ function addGrid() {
     createGrid();
     shuffleCards();
     addGridElements();
+    addDynamicStyling(); //For the properties that can be changed in the settings
     bindCardImages();
 }

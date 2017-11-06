@@ -36,7 +36,7 @@
             <button class="game-button" id="options-button"><img id="cog" src="images/cog.png"></button>
         </section>
 
-        <div id="options-screen" class="modal">
+        <div class="modal" id="options-screen">
             <section class="modal-content" id="options-content">
                 <button id="options-close-button">&times;</button>
 
@@ -62,9 +62,29 @@
                         </section>
 
                         <span class="note">The width can only be set to even values to ensure that the number of cards will also be even.</span>
-
-                        <input type="submit" id="apply-button" value="Apply">
                     </section>
+                    <section class="options-screen-section">
+                        <h3 class="options-section-title">Card shape</h3>
+
+                        <section id="shape-selection">
+                            <div class="radio-option-and-label">
+                                <input type="radio" name="shape" value="square" id="square-option">
+                                <label for="square-option" class="options-label">Square</label>
+                            </div>
+
+                            <div class="radio-option-and-label">
+                                <input type="radio" name="shape" value="rounded-square" id="rounded-square-option" checked>
+                                <label for="rounded-square-option" class="options-label">Rounded-Square</label>
+                            </div>
+
+                            <div class="radio-option-and-label">
+                                <input type="radio" name="shape" value="circle" id="circle-option">
+                                <label for="circle-option" class="options-label">Circle</label>
+                            </div>
+                        </section>
+                    </section>
+
+                    <input type="submit" id="apply-button" value="Apply">
                 </form>
             </section>
         </div>
