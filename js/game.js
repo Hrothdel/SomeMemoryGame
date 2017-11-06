@@ -60,6 +60,9 @@ function win() {
     $('#win-screen').css('display', 'block');
     $('#win-time').text(`Time: ${win_time}`);
     $('#win-moves').text(`Moves: ${moves}`);
+
+    $('#win-stars').children().remove();
+    $('#win-stars').append($('#star-rating').html());
 }
 
 function checkMatch(pair) {
