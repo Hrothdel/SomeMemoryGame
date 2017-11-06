@@ -184,42 +184,41 @@ output {
     margin: 5px;
 }
 
-.grid-row {
-    display: flex;
-
-    width: 100%;
-    flex-wrap: row;
-    align-content: stretch;
-
-    background-color: grey;
-}
-
 #grid {
     display: flex;
 
     flex-wrap: wrap;
     flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
 
-    width: 1000px;
+    width: auto;
     margin: auto;
-    background-color: red;
+    padding: 10px;
+    background-color: #ccc;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.grid-row {
+    display: flex;
+
+    flex-wrap: row;
+    justify-content: center;
+
+    /*background-color: grey;*/
 }
 
 .card {
-    font-size: 35px;
-
-    width: 70px;
-    height: 70px;
-    flex-grow: 1;
-
-    padding: 50px 0;
     margin: 10px;
 
     background-color: white;
-    color: white;
-    text-align: center;
+
+    width: 150px;
+    height: 150px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .card-image {
