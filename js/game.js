@@ -10,7 +10,7 @@ let width = 4,
     optimal_moves = 0,
     mid_rating_step = 5,
     low_rating_step = 15,
-    shape_border_radius = 20;
+    shape_border_radius = 80;
 
 let start_button = $('#start-button'),
     grid_container,
