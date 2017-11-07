@@ -54,7 +54,7 @@ body {
 #content {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
 }
 
@@ -178,12 +178,9 @@ output {
     text-align: center;
 }
 
-#stats-section {
-    display: none;
-    justify-content: center;
-}
-
 #buttons-section {
+    order: 1;
+    flex-grow: 2;
     display: none;
     justify-content: center;
 
@@ -199,11 +196,24 @@ output {
     justify-content: center;
 }
 
+#stats-section {
+    order: 3;
+    flex-grow: 1;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    /*background-color: #bbb;*/
+}
+
 .stats {
     font-size: 40px;
-    margin: 10px 10px;
-    padding: 5px 15px;
-    background-color: #ccc;
+    margin: auto 0;
+    padding: 0 10px;
+    width: auto;
+
+    background-color: #bbe;
+    border: 1px solid #777;
+    border-radius: 45px;
 }
 
 #star-rating {
@@ -219,6 +229,8 @@ output {
 }
 
 #grid {
+    order: 2;
+    flex-grow: 1;
     display: flex;
 
     flex-wrap: wrap;
@@ -227,10 +239,10 @@ output {
     width: auto;
     margin: auto;
     padding: 10px;
-    background-color: #ccc;
+    /*background-color: #ccc;*/
 
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-end;
+    align-items: flex-end;
 }
 
 .grid-row {
@@ -249,7 +261,9 @@ output {
 
     width: 150px;
     height: 150px;
+
     border: 1px solid #888;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
 
     display: flex;
     justify-content: center;
