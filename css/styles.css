@@ -60,9 +60,10 @@ body {
 
     cursor: pointer;
     background-color: #ccf;
-    /*border-color: #f99;*/
 
     box-shadow: 10px 0 20px rgba(150, 150, 255, 0.4), -10px 0 20px rgba(150, 150, 255, 0.4);
+
+    transition: box-shadow .5s;
 }
 
 #content {
