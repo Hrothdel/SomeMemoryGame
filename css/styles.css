@@ -51,6 +51,20 @@ body {
     border-radius: 40px;
 }
 
+.button:hover,
+.button:focus {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: 0;
+
+    cursor: pointer;
+    background-color: #ccf;
+    /*border-color: #f99;*/
+
+    box-shadow: 10px 0 20px rgba(150, 150, 255, 0.4), -10px 0 20px rgba(150, 150, 255, 0.4);
+}
+
 #content {
     display: flex;
     flex-wrap: wrap;
@@ -98,6 +112,7 @@ body {
 #options-close-button:focus {
     cursor: pointer;
     color: #ccc;
+    box-shadow: none;
 }
 
 #options-header {
