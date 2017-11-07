@@ -49,6 +49,8 @@ body {
 
     border: 2px solid #ccc;
     border-radius: 40px;
+
+    padding: 0 20px;
 }
 
 .button:hover,
@@ -63,7 +65,7 @@ body {
 
     box-shadow: 10px 0 20px rgba(150, 150, 255, 0.4), -10px 0 20px rgba(150, 150, 255, 0.4);
 
-    transition: box-shadow .5s;
+    transition: box-shadow .5s, background-color .5s;
 }
 
 #content {
@@ -80,6 +82,10 @@ body {
 
 #start-button {
     font-size: 35px;
+}
+
+#options-button {
+    padding: 5px;
 }
 
 #cog {
@@ -205,7 +211,6 @@ output {
 
 .game-button {
     margin: auto;
-    padding: 5px;
     font-size: 40px;
 
     display: flex;
