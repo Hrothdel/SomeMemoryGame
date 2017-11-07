@@ -1,6 +1,6 @@
 function updateStats() {
-    $('#moves').text(`Moves: ${moves}`);
-    $('#matches').text(`Matches: ${matches}`);
+    $('#moves').text(`Moves ${moves}`);
+    $('#matches').text(`Matches ${matches}`);
 
     updateStarRating();
 }
@@ -12,12 +12,12 @@ function pad(number) {
 function getTimeElapsed() {
     let delta = Date.now() - start_time;
 
-    return pad(Math.floor(delta/1000/60)) + '-' + pad(Math.floor((delta/1000))%60);
+    return pad(Math.floor(delta/1000/60)) + ':' + pad(Math.floor((delta/1000))%60);
 }
 
 function updateTimer() {
     if(start_time !== undefined) {
-        $('#timer').text(`Time: ${getTimeElapsed()}`);
+        $('#timer').text(`Time ${getTimeElapsed()}`);
     }
 }
 
