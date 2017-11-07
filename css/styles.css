@@ -218,7 +218,6 @@ output {
     display: none;
     flex-direction: column;
     align-items: flex-start;
-    /*background-color: #bbb;*/
 }
 
 .stats {
@@ -255,7 +254,6 @@ output {
     width: auto;
     margin: auto;
     padding: 10px;
-    /*background-color: #ccc;*/
 
     justify-content: flex-end;
     align-items: flex-end;
@@ -266,8 +264,6 @@ output {
 
     flex-wrap: row;
     justify-content: center;
-
-    /*background-color: grey;*/
 }
 
 .card {

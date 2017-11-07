@@ -81,8 +81,9 @@ function checkMatch(pair) {
     }
 }
 
-function showOptions() {
+function showOptionsScreen() {
     $('#options-screen').css('display', 'flex');
+
 }
 
 function hideOptionsScreen() {
@@ -138,7 +139,7 @@ start_button.click(function () {
 
 $('#reset-button').click(restart);
 
-$('#options-button').click(showOptions);
+$('#options-button').click(showOptionsScreen);
 
 $('#options-close-button').click(hideOptionsScreen);
 
