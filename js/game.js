@@ -1,5 +1,7 @@
 const content_section = $('#content');
 
+const fade_time = 300;
+
 let width = 4,
     height = 4,
     cards = [],
@@ -58,7 +60,7 @@ function win() {
     let win_time = getTimeElapsed();
     start_time = undefined;
 
-    $('#win-screen').css('display', 'flex');
+    showWinScreen();
     $('#win-time').text(`Time: ${win_time}`);
     $('#win-moves').text(`Moves: ${moves}`);
 
@@ -83,11 +85,24 @@ function checkMatch(pair) {
 
 function showOptionsScreen() {
     $('#options-screen').css('display', 'flex');
-
+    $('#options-screen').animate({opacity: 1}, fade_time);
 }
 
 function hideOptionsScreen() {
-    $('#options-screen').css('display', 'none');
+    $('#options-screen').animate({opacity: 0}, fade_time, function(){
+        $('#options-screen').css('display', 'none');
+    });
+}
+
+function showWinScreen(){
+    $('#win-screen').css('display', 'flex');
+    $('#win-screen').animate({opacity: 1}, fade_time);
+}
+
+function hideWinScreen() {
+    $('#win-screen').animate({opacity: 0}, fade_time, function () {
+        $('#win-screen').css('display', 'none');
+    });
 }
 
 function changeCardShape(shape) {
@@ -144,7 +159,7 @@ $('#options-button').click(showOptionsScreen);
 $('#options-close-button').click(hideOptionsScreen);
 
 $('#win-reset').click(function () {
-    $('#win-screen').css('display', 'none');
+    hideWinScreen();
 
     restart();
 });
