@@ -288,10 +288,26 @@ output {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    cursor: pointer;
+}
+
+.card:hover {
+    box-shadow: 0 0 20px rgba(120, 120, 255, .7);
+}
+
+.active-card:hover {
+    cursor: default;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .matched-card {
     transition: background-color .5s; /*To only animate the color transition of matched cards*/
+    cursor: default;
+}
+
+.matched-card:hover {
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .card-image {

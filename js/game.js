@@ -84,6 +84,9 @@ function checkMatch(pair) {
         cards[pair[0]].hide();
         cards[pair[1]].hide();
     }
+
+    cards[pair[0]].element.removeClass('active-card');
+    cards[pair[1]].element.removeClass('active-card');
 }
 
 function showOptionsScreen() {
@@ -131,6 +134,7 @@ content_section.click(function (event) {
 
     if(!isNaN(index) && cards[index].is_hidden && active.length < 2) {
         cards[index].show();
+        cards[index].element.addClass('active-card');
         active.push(index);
 
         if(start_time === undefined) {
