@@ -232,9 +232,11 @@ output {
     padding: 0 10px;
     width: auto;
 
-    background-color: #bbe;
-    border: 1px solid #777;
+    background-color: #bbf;
+    /*border: 1px solid #777;*/
     border-radius: 45px;
+    /*background: none;*/
+    box-shadow: 0 0 40px rgba(150, 150, 255, 0.8);
 }
 
 #star-rating {
@@ -293,9 +295,17 @@ output {
     height: 50px;
 }
 
+#win-content {
+    height: 60%;
+}
+
 .win-text {
-    font-size: 30px;
+    font-size: 40px;
     padding: 10px;
+}
+
+.win-stats {
+    margin: auto;
 }
 
 #win-reset {
