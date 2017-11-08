@@ -61,8 +61,8 @@ function win() {
     start_time = undefined;
 
     showWinScreen();
-    $('#win-time').text(`Time: ${win_time}`);
-    $('#win-moves').text(`Moves: ${moves}`);
+    $('#win-time').text(`Time ${win_time}`);
+    $('#win-moves').text(`Moves ${moves}`);
 
     $('#win-stars').children().remove();
     $('#win-stars').append($('#star-rating').html());
