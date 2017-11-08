@@ -1,6 +1,8 @@
 const content_section = $('#content');
 
-const fade_time = 300;
+const fade_time = 300,
+    flip_time = 300,
+    card_size = 150;
 
 let width = 4,
     height = 4,
@@ -71,6 +73,7 @@ function win() {
 function checkMatch(pair) {
     if(cards[pair[0]].content === cards[pair[1]].content) {
         matches++;
+        updateStats();
         cards[pair[0]].match();
         cards[pair[1]].match();
 
@@ -126,7 +129,7 @@ function changeCardShape(shape) {
 content_section.click(function (event) {
     let index = Number($(event.target).attr('id')) - 1;
 
-    if(!isNaN(index) && cards[index].is_hidden) {
+    if(!isNaN(index) && cards[index].is_hidden && active.length < 2) {
         cards[index].show();
         active.push(index);
 
@@ -135,9 +138,10 @@ content_section.click(function (event) {
         }
 
         if(active.length === 2) {
-            checkMatch(active);
-
-            active = [];
+            setTimeout(function () {
+                checkMatch(active);
+                active = [];
+            }, flip_time);
         } else {
             moves++;
         }

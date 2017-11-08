@@ -20,16 +20,24 @@ Card.prototype.bindImage = function (number) {
 Card.prototype.show = function () {
     this.is_hidden = false;
 
-    this.element.css('background-color', 'black');
-    $(`#${this.position}-img`).css('display', 'inline');
+    this.element.animate({width: 0, margin: '0 85'}, flip_time/2, function () {
+        this.element.css('background-color', 'black');
+        $(`#${this.position}-img`).css('display', 'inline');
+
+        this.element.animate({width: card_size, margin: '10'}, flip_time/2);
+    }.bind(this));
 };
 
 Card.prototype.hide = function () {
     setTimeout(function () {
         this.is_hidden = true;
 
-        this.element.css('background-color', 'white');
-        $(`#${this.position}-img`).css('display', 'none');
+        this.element.animate({width: 0, margin: '10 85'}, flip_time/2, function () {
+            this.element.css('background-color', 'white');
+            $(`#${this.position}-img`).css('display', 'none');
+
+            this.element.animate({width: card_size, margin: '10'}, flip_time/2);
+        }.bind(this));
     }.bind(this), 500);
 };
 
