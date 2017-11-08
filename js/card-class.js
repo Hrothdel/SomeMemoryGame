@@ -42,5 +42,6 @@ Card.prototype.hide = function () {
 };
 
 Card.prototype.match = function () {
+    this.element.addClass('matched-card');
     this.element.css('background-color', '#3f1');
 }
