@@ -5,14 +5,14 @@ function updateStats() {
     updateStarRating();
 }
 
-function pad(number) {
+function padNumber(number) {
     return (number > 9 ? String(number) : '0' + String(number));
 }
 
 function getTimeElapsed() {
     let delta = Date.now() - start_time;
 
-    return pad(Math.floor(delta/1000/60)) + ':' + pad(Math.floor((delta/1000))%60);
+    return padNumber(Math.floor(delta/1000/60)) + ':' + padNumber(Math.floor((delta/1000))%60);
 }
 
 function updateTimer() {
@@ -50,6 +50,6 @@ function recalculateOptimalMoves() {
     optimal_moves = (width*height)/2 + Math.ceil((width*height)/4);
 }
 
-function addStats() {
+function showStats() {
     $('#stats-section').css('display', 'flex');
 }

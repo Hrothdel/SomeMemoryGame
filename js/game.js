@@ -29,22 +29,22 @@ function initialize() {
     start_time = undefined;
 }
 
-function addButtons() {
+function showButtons() {
     $('#buttons-section').css('display', 'flex');
 }
 
 function startGame() {
     initialize();
 
-    addStats();
-    addButtons();
+    showStats();
+    showButtons();
     addGrid();
 
     recalculateOptimalMoves();
     updateStarRating();
 };
 
-function restart() {
+function restartGame() {
     //Removing the whole grid, to have reinitialized all of the card objects
     $('#grid').remove();
     initialize();
@@ -160,7 +160,7 @@ start_button.click(function () {
     startGame();
 });
 
-$('#reset-button').click(restart);
+$('#reset-button').click(restartGame);
 
 $('#options-button').click(showOptionsScreen);
 
@@ -169,7 +169,7 @@ $('#options-close-button').click(hideOptionsScreen);
 $('#win-reset').click(function () {
     hideWinScreen();
 
-    restart();
+    restartGame();
 });
 
 $('#options-form').submit(function (event) {
@@ -182,7 +182,7 @@ $('#options-form').submit(function (event) {
     hideOptionsScreen();
 
     recalculateOptimalMoves();
-    restart();
+    restartGame();
 });
 
 $(window).click(function (event) {
