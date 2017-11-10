@@ -3,7 +3,8 @@ body {
 }
 
 #title-container {
-    margin: 40px 0;
+    /*margin: 40px 0;*/
+    margin: auto;
     display: flex;
     justify-content: center;
 }
@@ -11,6 +12,7 @@ body {
 #title {
     font-family: 'Poiret One', cursive;
     font-size: 100px;
+    text-align: center;
 }
 
 .modal {
@@ -211,7 +213,8 @@ output {
 }
 
 .game-button {
-    margin: auto;
+    margin: auto 40px;
+
     font-size: 40px;
 
     display: flex;
@@ -219,16 +222,17 @@ output {
 }
 
 #stats-section {
-    order: 3;
-    flex-grow: 1;
+    order: 2;
+    /*flex-grow: 2;*/
     display: none;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    /*min-width: 30%;*/
 }
 
 .stats {
     font-size: 40px;
-    margin: auto 0;
+    margin: 10px 0;
     padding: 0 10px;
     width: auto;
 
@@ -252,19 +256,21 @@ output {
 }
 
 #grid {
-    order: 2;
+    order: 3;
     flex-grow: 1;
+    /*min-width: 900px;*/
     display: flex;
 
     flex-wrap: wrap;
     flex-direction: column;
 
-    width: auto;
+    width: 100%;
+
     margin: auto;
     padding: 10px;
 
-    justify-content: flex-end;
-    align-items: flex-end;
+    /*justify-content: flex-end;*/
+    align-items: center;
 }
 
 .grid-row {
@@ -330,4 +336,22 @@ output {
 
 #win-reset {
     margin: auto;
+}
+
+@media screen and (min-width: 950px) {
+    #grid {
+        order: 2;
+        align-items: flex-end;
+        width: auto;
+    }
+
+    #stats-section {
+        order: 3;
+        flex-grow: 1;
+        align-items: flex-start;
+    }
+
+    .stats{
+        margin: auto 0;
+    }
 }
