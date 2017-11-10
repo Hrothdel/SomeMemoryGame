@@ -3,7 +3,6 @@ body {
 }
 
 #title-container {
-    /*margin: 40px 0;*/
     margin: auto;
     display: flex;
     justify-content: center;
@@ -27,7 +26,6 @@ body {
     left: 0;
     position: fixed;
     z-index: 1;
-    /*overflow: auto;*/
 
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4);
@@ -223,11 +221,9 @@ output {
 
 #stats-section {
     order: 2;
-    /*flex-grow: 2;*/
     display: none;
     flex-direction: column;
     align-items: center;
-    /*min-width: 30%;*/
 }
 
 .stats {
@@ -237,9 +233,7 @@ output {
     width: auto;
 
     background-color: #bbf;
-    /*border: 1px solid #777;*/
     border-radius: 45px;
-    /*background: none;*/
     box-shadow: 0 0 40px rgba(150, 150, 255, 0.8);
 }
 
@@ -258,7 +252,6 @@ output {
 #grid {
     order: 3;
     flex-grow: 1;
-    /*min-width: 900px;*/
     display: flex;
 
     flex-wrap: wrap;
@@ -269,7 +262,6 @@ output {
     margin: auto;
     padding: 10px;
 
-    /*justify-content: flex-end;*/
     align-items: center;
 }
 
