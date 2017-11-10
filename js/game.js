@@ -41,7 +41,7 @@ function startGame() {
     addGrid();
 
     recalculateOptimalMoves();
-    updateStarRating();
+    updateStarRating(); //To show the star rating from the start
 };
 
 function restartGame() {
@@ -53,20 +53,21 @@ function restartGame() {
     //Update stats and timer, to show initial values
     updateStats();
 
-    start_time = Date.now();  //A quite hacky way to display the initial value of the timer
+    start_time = Date.now(); //A quite hacky way to display the initial value of the timer
     updateTimer();
     start_time = undefined; //Stop the timer so that it only starts on the first move after the restart
 }
 
 function win() {
     let win_time = getTimeElapsed();
-    start_time = undefined;
+    start_time = undefined; //To stop the timer while the win-screen is displayed
 
     showWinScreen();
     $('#win-time').text(`Time ${win_time}`);
     $('#win-moves').text(`Moves ${moves}`);
 
-    $('#win-stars').children().remove();
+    $('#win-stars').children().remove(); //Remove the old win star rating (if it exists),
+                                         //to add the new one
     $('#win-stars').append($('#star-rating').html());
 }
 
@@ -74,10 +75,13 @@ function checkMatch(pair) {
     if(cards[pair[0]].content === cards[pair[1]].content) {
         matches++;
         updateStats();
-        cards[pair[0]].match();
+
+        cards[pair[0]].match(); //If the cards match, a visual clue is displayed
         cards[pair[1]].match();
 
-        if(matches === width*height/2) {
+        if(matches === width*height/2) { //If the number of matches equals the number of
+                                         //pairs(the total number of cards devided by 2),
+                                         //the game is won
             win();
         }
     } else {
@@ -96,7 +100,7 @@ function showOptionsScreen() {
 
 function hideOptionsScreen() {
     $('#options-screen').animate({opacity: 0}, fade_time, function(){
-        $('#options-screen').css('display', 'none');
+        $('#options-screen').css('display', 'none'); //Only hide the element completely when the fading ends
     });
 }
 
@@ -107,7 +111,7 @@ function showWinScreen(){
 
 function hideWinScreen() {
     $('#win-screen').animate({opacity: 0}, fade_time, function () {
-        $('#win-screen').css('display', 'none');
+        $('#win-screen').css('display', 'none'); //Same as above
     });
 }
 
@@ -132,21 +136,25 @@ function changeCardShape(shape) {
 content_section.click(function (event) {
     let index = Number($(event.target).attr('id')) - 1;
 
-    if(!isNaN(index) && cards[index].is_hidden && active.length < 2) {
+    if(!isNaN(index) && cards[index].is_hidden && active.length < 2) { //Only if the clicked element has an index (meaning
+                                                                       //it's a card), it is currently hidden and there
+                                                                       //aren't already two active cards, then show the
+                                                                       //clicked card
         cards[index].show();
-        cards[index].element.addClass('active-card');
+        cards[index].element.addClass('active-card'); //Add the active-card class to disable the hover effects of the
+                                                      //hidden cards
         active.push(index);
 
-        if(start_time === undefined) {
+        if(start_time === undefined) { //If the timer isn't already active, start it
             start_time = Date.now();
         }
 
-        if(active.length === 2) {
-            setTimeout(function () {
+        if(active.length === 2) { //If there are two active cards, check if they match
+            setTimeout(function () { //Wait until the show animation ends, and only then check if the cards match
                 checkMatch(active);
                 active = [];
             }, flip_time);
-        } else {
+        } else { //Add to the moves counter only on the first clicked card for each pair of two
             moves++;
         }
 
@@ -182,7 +190,7 @@ $('#options-form').submit(function (event) {
     hideOptionsScreen();
 
     recalculateOptimalMoves();
-    restartGame();
+    restartGame(); //The game must restart for the changes to have an effect
 });
 
 $(window).click(function (event) {
