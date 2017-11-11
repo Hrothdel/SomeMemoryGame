@@ -10,7 +10,7 @@ body {
 
 #title {
     font-family: 'Poiret One', cursive;
-    font-size: 100px;
+    font-size: 70px;
     text-align: center;
 }
 
@@ -268,7 +268,7 @@ output {
 .grid-row {
     display: flex;
 
-    flex-wrap: row;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
