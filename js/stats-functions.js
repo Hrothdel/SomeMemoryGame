@@ -29,12 +29,7 @@ function updateStarRating () {
 
     $('#star-rating').children().remove();
 
-    if(moves <= (optimal_moves + Math.ceil(optimal_moves * 0.75))) { //First star is given for any number of moves smaller
-                                                                     //than or equal to the optimal number + 75% of it
-        star_images += active_star;
-    } else {
-        star_images += inactive_star;
-    }
+    star_images += active_star;
 
     if(moves <= (optimal_moves + Math.ceil(optimal_moves * 0.25))) { //Second star for the optimal number + 25%
         star_images += active_star;
