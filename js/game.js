@@ -152,7 +152,7 @@ content_section.click(function (event) {
         if(active.length === 2) { //If there are two active cards, check if they match
             setTimeout(function () { //Wait until the show animation ends, and only then check if the cards match
                 checkMatch(active);
-                active = [];
+                setTimeout(function () {active = [];}, flip_time*2);
             }, flip_time);
         } else { //Add to the moves counter only on the first clicked card for each pair of two
             moves++;
